@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<script src="{% static 'js/scripts.js' %}"></script>
+
+<br>
+
+<div class="container bg-white shadow-md p-5 form-layout">
+
+    <h2>Welcome to Djira</h2>
+
+    <div id="weather"></div>
+
+    <br>
+    {% if tasks > 0 %}
+    <p>You have {{ tasks }} task{% if tasks != 1 %}s{% endif %} remaining</p>
+    {% else %}
+    <p>You have no work assigned</p>
+    {% endif %}
+
+    <a href="{% url 'tasks:self' %}">View Tasks</a>
+    <br>
+    <a href="{% url 'users:logout' %}">Log out</a>
+</div>
+
+{% endblock %}

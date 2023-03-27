@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<br>
+<br>
+
+<div class="container bg-white shadow-md p-5 form-layout">
+<h2> Please Login </h2>
+<hr>
+<form method="POST" autocomplete="off">
+
+    {% csrf_token %}
+
+    {{form|crispy}}
+
+    <input type="submit" value="Submit"/>
+
+</form>
+</div>
+{% endblock %}

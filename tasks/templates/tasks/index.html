@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+
+<br>
+<table class="table table-bordered table-hover">
+    <thead>
+    <tr>
+        <th>Task</th>
+        <th>Description</th>
+        <th>Assignee</th>
+        <th>Story Points</th>
+        <th>Status</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+    <tbody>
+    <div id="example1">
+        {% for task in tasks %}
+        <tr>
+            <td><a href="{% url 'tasks:update' task.id %}">{{ task.header }}</a></td>
+            <td>{{ task.description }}</td>
+            <td>{{ task.user }}</td>
+            <td>{{ task.story_points }}</td>
+            <td><a href="{% url 'tasks:change-status' task.id %}">{% if task.complete %}
+                Complete
+                {% else %}
+                To Do
+                {% endif %}</a>
+            </td>
+            <td>
+                <a href="{% url 'tasks:delete' task.id %}" class="btn btn-warning">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </div>
+    </tbody>
+</table>
+
+<a href="{% url 'tasks:create' %}" class="btn btn-secondary btn-lg active" role="button" aria-pressed="true">Add</a>
+{% endblock %}
+
+<!--{% block js_block %}-->
+<!--<script type="text/javascript" scr="{% static 'djira/js/sortable.js' %}"></script>-->
+<!--{% endblock %}-->
