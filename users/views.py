@@ -31,8 +31,9 @@ def register(request):
 def my_login(request):
 
     current_user = request.user
-    if current_user.pk:
-        return redirect('/tasks/dashboard/')
+    if current_user:
+        if current_user.pk:
+            return redirect('/tasks/dashboard/')
 
     form = LoginForm()
 
