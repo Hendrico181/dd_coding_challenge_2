@@ -1,0 +1,1 @@
+web gunicorn djira.wsgi:application --log-file -
